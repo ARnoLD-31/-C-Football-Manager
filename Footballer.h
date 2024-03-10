@@ -38,5 +38,6 @@ public:
 	int buy(Club* club);
 	int sell(bool is_transfer_market);
 	void die();
+	void resurrect();
 	void transfer(Club* new_club);
 };

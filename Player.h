@@ -23,6 +23,7 @@ private:
 									   {"Money Spent", 0}};
 	Economist* economist = nullptr;
 public:
+	Player();
 	Player(string name);
 	Player(string name, int balance, int income);
 	// Setters
@@ -47,6 +48,7 @@ public:
 
 	// Methods
 	bool check_withdrawal(int money);
-	int withdrawal(int money);
-	int deposit(int money);
+	int withdrawal(int money, char type);
+	int deposit(int money, char type);
+	void complete_the_circle();
 };

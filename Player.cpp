@@ -1,10 +1,13 @@
-#include "Player.h"
 #include <iostream>
+#include "Player.h"
 #include "Economist.h"
 
 using namespace std;
 
-
+Player::Player() {
+	this->balance = 10000000;
+	this->income = 2000000;
+}
 Player::Player(string name) {
 	this->name = name;
 	this->balance = 10000000;
@@ -35,26 +38,34 @@ int Player::get_bonus(string type) { return this->bonuses[type]; }
 int Player::get_statistic(string type) { return this->statistics[type]; }
 Economist* Player::get_economist() { return this->economist; }
 
-// Metods
+// Methods
 bool Player::check_withdrawal(int money) {
-	/*if (economist != nullptr)
-		;  TODO*/
+	if (economist != nullptr)
+		;
 	if (this->balance >= money)
 		return true;
 	else
 		return false;
 }
 
-int Player::withdrawal(int money) {
-	/*if (economist != nullptr)
-		; */
+int Player::withdrawal(int money, char type) {
+	if (economist != nullptr)
+		;
 	this->balance -= money;
 	return money;
 }
 
-int Player::deposit(int money) {
-	/*if (economist != nullptr)
-		; */
-	this->balance += money;
+int Player::deposit(int money, char type) {
+	if (economist != nullptr and type == 'B')
+		;
+	if (type == 'B')
+		this->balance += money;
+	else
+		this->income += money;
 	return money;
+}
+
+
+void Player::complete_the_circle() {
+	cout << this->name << " completed the circle. Credited " << this->deposit(this->income, 'B') << endl;
 }

@@ -36,7 +36,7 @@ bool Footballer::is_available() {
 
 int Footballer::buy(Club* club) {
 	Player* player = club->get_owner();
-	int bought_price = player->withdrawal(this->price);
+	int bought_price = player->withdrawal(this->price, 'B');
 	this->club = club;
 	cout << "Footballer " << this->name << " was bought in " << club->get_name() << " for " << bought_price << endl;
 	return bought_price;
@@ -47,7 +47,7 @@ int Footballer::sell(bool is_transfer_market) {
 	int sold_price = this->price;
 	if (!is_transfer_market)
 		sold_price /= 2;
-	sold_price = player->withdrawal(sold_price);
+	sold_price = player->withdrawal(sold_price, 'B');
 	this->club = nullptr;
 	cout << "Footballer " << this->name << " was sold for " << sold_price << endl;
 	return sold_price;
@@ -58,6 +58,11 @@ void Footballer::die() {
 	this->club->set_footballer(nullptr);
 	this->club = nullptr;
 	this->flu = 0;
+}
+
+void Footballer::resurrect() {
+	this->is_dead = false;
+	this->is_resurrected = true;
 }
 
 void Footballer::transfer(Club* new_club) {
