@@ -15,4 +15,3 @@ extern Player* pl1;
 extern Player* pl2;
 extern map <string, Club>* clubs;
 extern map <string, Footballer>* footballers;
-extern Club* Real_Madrid;

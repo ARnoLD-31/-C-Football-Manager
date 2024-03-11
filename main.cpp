@@ -1,4 +1,5 @@
 #include <iostream>
+#include <conio.h>
 #include "Footballer.h"
 #include "Player.h"
 #include "Club.h"
@@ -8,6 +9,8 @@ using namespace std;
 
 int main() {
 	initialize_clubs();
-	cout << Real_Madrid->get_name();
+	initialize_footballers();
+	cout << (*clubs)["Real Madrid"].get_name() << endl;
+	_getch();
 	return 0;
 }
