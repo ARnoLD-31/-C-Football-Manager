@@ -1,5 +1,6 @@
 #include "Club.h"
 #include "Footballer.h"
+#include "Coach.h"
 #include <iostream>
 #include <algorithm>
 

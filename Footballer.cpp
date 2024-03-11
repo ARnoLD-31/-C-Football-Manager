@@ -14,7 +14,7 @@ Footballer::Footballer(string name, short power, int price) {
 }
 
 // Setters
-void Footballer::set_flu(int flu) { this->flu = flu; }
+void Footballer::set_flu(short flu) { this->flu = flu; }
 void Footballer::set_is_resurrected(bool is_resurrected) { this->is_resurrected = is_resurrected; }
 void Footballer::set_is_dead(int is_dead) { this->is_dead = is_dead; }
 void Footballer::set_club(Club* club) { this->club = club; }
