@@ -1,14 +1,17 @@
 #include "Club.h"
 #include "Footballer.h"
 #include <iostream>
+#include <algorithm>
 
 using namespace std;
-
-Club::Club(string name, int price, string league, string codename) {
+Club::Club() {}
+Club::Club(string name, int price, string league) {
 	this->name = name;
 	this->price = price;
 	this->league = league;
-	this->codename = codename;
+	this->codename = this->name;
+	replace(this->codename.begin(), this->codename.end(), ' ', '_');
+	replace(this->codename.begin(), this->codename.end(), '-', '_');
 	this->income = this->price / 10;
 	this->win_price = { {"Footballer", this->price / 100000 / 3 * 100000},
 						{"Coach", this->price / 100000 / 1.5 * 100000},

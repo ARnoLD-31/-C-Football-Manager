@@ -25,7 +25,8 @@ private:
 								{"Coach", 0},
 								{"Manager", 0} };
 public:
-	Club(string name, int price, string league, string codename);
+	Club();
+	Club(string name, int price, string league);
 	//Setters
 	void set_cooldown(short cooldown);
 	void set_owner(Player* owner);

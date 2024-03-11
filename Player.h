@@ -4,7 +4,7 @@
 
 using namespace std;
 
-class Economist;
+class Manager;
 
 class Player {
 private:
@@ -21,7 +21,6 @@ private:
 									   {"Summary of throws", 0},
 									   {"Money Earned", 0},
 									   {"Money Spent", 0}};
-	Economist* economist = nullptr;
 public:
 	Player();
 	Player(string name);
@@ -34,7 +33,6 @@ public:
 	void set_is_disqualified(bool is_disqualified);
 	void set_bonus(string type, short count);
 	void set_statistic(string type, int number);
-	void set_economist(Economist* economist);
 
 	// Getters
 	string get_name();
@@ -44,7 +42,7 @@ public:
 	bool get_is_disqualified();
 	int get_bonus(string type);
 	int get_statistic(string type);
-	Economist* get_economist();
+	//Manager* get_economist();
 
 	// Methods
 	bool check_withdrawal(int money);

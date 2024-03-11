@@ -1,6 +1,6 @@
 #include <iostream>
 #include "Player.h"
-#include "Economist.h"
+#include "Manager.h"
 
 using namespace std;
 
@@ -26,7 +26,6 @@ void Player::set_position(short position) { this->position = position; }
 void Player::set_is_disqualified(bool is_disqualified) { this->is_disqualified = is_disqualified; }
 void Player::set_bonus(string type, short count) { this->bonuses[type] = count; }
 void Player::set_statistic(string type, int number) { this->statistics[type] = number; }
-void Player::set_economist(Economist* economist) { this->economist = economist; }
 
 // Getters
 string Player::get_name() { return this->name; }
@@ -36,12 +35,12 @@ short Player::get_position() { return this->position; }
 bool Player::get_is_disqualified() { return this->is_disqualified; }
 int Player::get_bonus(string type) { return this->bonuses[type]; }
 int Player::get_statistic(string type) { return this->statistics[type]; }
-Economist* Player::get_economist() { return this->economist; }
+//Manager* Player::get_economist() { return this->economist; }
 
 // Methods
 bool Player::check_withdrawal(int money) {
-	if (economist != nullptr)
-		;
+	/*if (Player::get_economist() != nullptr)
+		;*/
 	if (this->balance >= money)
 		return true;
 	else
@@ -49,14 +48,14 @@ bool Player::check_withdrawal(int money) {
 }
 
 int Player::withdrawal(int money, char type) {
-	if (economist != nullptr)
-		;
+	/*if (Player::get_economist() != nullptr)
+		;*/
 	this->balance -= money;
 	return money;
 }
 
 int Player::deposit(int money, char type) {
-	if (economist != nullptr and type == 'B')
+	if (type == 'B') //if (Player::get_economist() != nullptr and type == 'B')
 		;
 	if (type == 'B')
 		this->balance += money;

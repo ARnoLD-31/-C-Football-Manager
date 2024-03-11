@@ -136,7 +136,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Club.h" />
-    <ClInclude Include="Economist.h" />
     <ClInclude Include="Footballer.h" />
     <ClInclude Include="Globals.h" />
     <ClInclude Include="Manager.h" />

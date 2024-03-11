@@ -16,6 +16,7 @@ private:
 	string name;
 	Club* club = nullptr;
 public:
+	Footballer();
 	Footballer(string name, short power, int price);
 
 	// Setters

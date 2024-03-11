@@ -5,6 +5,8 @@
 
 using namespace std;
 
+Footballer::Footballer() {}
+
 Footballer::Footballer(string name, short power, int price) {
 	this->name = name;
 	this->power = power;
