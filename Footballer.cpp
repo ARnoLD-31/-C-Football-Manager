@@ -73,4 +73,11 @@ void Footballer::transfer(Club* new_club) {
 		this->club = new_club;
 		this->club->set_footballer(this);
 	}
+	else {
+		Footballer* second_footballer = new_club->get_footballer();
+		second_footballer->set_club(this->club);
+		this->club->set_footballer(second_footballer);
+		this->club = new_club;
+		this->club->set_footballer(this);
+	}
 }

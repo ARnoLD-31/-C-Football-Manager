@@ -2,6 +2,7 @@
 #include "Club.h"
 #include "Footballer.h"
 #include "Coach.h"
+#include "Manager.h"
 #include "Player.h"
 #include <iostream>
 
@@ -20,15 +21,26 @@ string coach_names[16] = {"Josep Guardiola", "Jurgen Klopp", "Zinedine Zidane", 
 short coach_powers[16] = { 3, 3, 3, 3, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1 };
 map <short, int> coach_pps = { {1, 1000000 }, {2, 2200000}, {3, 4000000} };
 
+string manager_names[9] = { "Mohammad bin Salman", "Mansour bin Zayed", "Carlos Slim", "David Beckham", "Ronaldo", "Didier Drogba", "Joseph Schumpeter", "Friedrich Hayek", "Karl Marx" };
+string manager_types[3] = { "Sheikh", "Former Footballer", "Economist" };
+map <short, int> sheikh_bonus = { {1, 1000000}, {2, 2500000}, {3, 5000000 } };
+map <short, short> ff_bonus = { {1, 1}, {2, 2}, {3, 3 } };
+map <short, float> economist_bonus_deposit = { {1, 0.1}, {2, 0.2}, {3, 0.4 } };
+map <short, float> economist_bonus_withdrawal = { {1, 0.15}, {2, 0.3}, {3, 0.6 } };
+int manager_price = 10000000;
+
+
 map<string, Footballer> FOOTBALLERS;
 map<string, Club> CLUBS;
 map<string, Coach> COACHES;
+map<string, Manager> MANAGERS;
 Player PLAYER_1;
 Player PLAYER_2;
 
 map<string, Footballer>* footballers = &FOOTBALLERS;
 map<string, Club>* clubs = &CLUBS;
 map<string, Coach>* coaches = &COACHES;
+map<string, Manager>* managers = &MANAGERS;
 Player* pl1 = &PLAYER_1;
 Player* pl2 = &PLAYER_2;
 
@@ -47,5 +59,11 @@ void initialize_footballers() {
 void initialize_coaches() {
 	for (int i = 0; i < 16; i++) {
 		COACHES[coach_names[i]] = Coach(coach_names[i], coach_powers[i], coach_pps[coach_powers[i]]);
+	}
+}
+
+void initialize_managers() {
+	for (int i = 0; i < 9; i++) {
+		MANAGERS[manager_names[i]] = Manager(manager_names[i], manager_price, manager_types[i / 3]);
 	}
 }

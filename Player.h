@@ -9,8 +9,8 @@ class Manager;
 class Player {
 private:
 	string name;
-	int balance;
-	int income;
+	int balance = 10000000;
+	int income = 2000000;
 	short position = 0;
 	bool is_disqualified = false;
 	map <string, short> bonuses = { {"Transfer market", 0},

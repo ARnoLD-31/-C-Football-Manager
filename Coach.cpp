@@ -15,7 +15,7 @@ Coach::Coach(string name, short power, int price) {
 
 // Setters
 void Coach::set_flu(short flu) { this->flu = flu; }
-void Coach::set_strike(short flu) { this->strike = strike; }
+void Coach::set_strike(short strike) { this->strike = strike; }
 void Coach::set_is_resurrected(bool is_resurrected) { this->is_resurrected = is_resurrected; }
 void Coach::set_is_dead(int is_dead) { this->is_dead = is_dead; }
 void Coach::set_club(Club* club) { this->club = club; }
@@ -72,6 +72,13 @@ void Coach::resurrect() {
 void Coach::transfer(Club* new_club) {
 	if (new_club->get_coach() == nullptr) {
 		this->club->set_coach(nullptr);
+		this->club = new_club;
+		this->club->set_coach(this);
+	}
+	else {
+		Coach* second_coach = new_club->get_coach();
+		second_coach->set_club(this->club);
+		this->club->set_coach(second_coach);
 		this->club = new_club;
 		this->club->set_coach(this);
 	}

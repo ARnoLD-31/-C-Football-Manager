@@ -4,14 +4,9 @@
 
 using namespace std;
 
-Player::Player() {
-	this->balance = 10000000;
-	this->income = 2000000;
-}
+Player::Player() {}
 Player::Player(string name) {
 	this->name = name;
-	this->balance = 10000000;
-	this->income = 2000000;
 }
 Player::Player(string name, int balance, int income) {
 	this->name = name;
@@ -50,7 +45,14 @@ bool Player::check_withdrawal(int money) {
 int Player::withdrawal(int money, char type) {
 	/*if (Player::get_economist() != nullptr)
 		;*/
-	this->balance -= money;
+	if (type == 'B') //if (Player::get_economist() != nullptr and type == 'B')
+		;
+	if (type == 'B' && Player::check_withdrawal(money))
+		this->balance -= money;
+	else if (type == 'I')
+		this->income -= money;
+	else
+		return -1; // If money isn't enought
 	return money;
 }
 
