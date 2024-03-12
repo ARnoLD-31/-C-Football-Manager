@@ -21,14 +21,14 @@ void Manager::set_is_dead(int is_dead) { this->is_dead = is_dead; }
 void Manager::set_club(Club* club) { this->club = club; }
 
 // Getters
-string Manager::get_name() { return this->name; }
-string Manager::get_type() { return this->type; }
-int Manager::get_price() { return this->price; }
-short Manager::get_flu() { return this->flu; }
-short Manager::get_level() { return this->level; }
-bool Manager::get_is_resurrected() { return this->is_resurrected; }
-bool Manager::get_is_dead() { return this->is_dead; }
-Club* Manager::get_club() { return this->club; }
+string Manager::get_name() const { return this->name; }
+string Manager::get_type() const { return this->type; }
+int Manager::get_price() const { return this->price; }
+short Manager::get_flu() const { return this->flu; }
+short Manager::get_level() const { return this->level; }
+bool Manager::get_is_resurrected() const { return this->is_resurrected; }
+bool Manager::get_is_dead() const { return this->is_dead; }
+Club* Manager::get_club() const { return this->club; }
 
 // Methods
 bool Manager::is_available() {

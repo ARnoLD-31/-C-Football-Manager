@@ -21,14 +21,14 @@ void Coach::set_is_dead(int is_dead) { this->is_dead = is_dead; }
 void Coach::set_club(Club* club) { this->club = club; }
 
 // Getters
-string Coach::get_name() { return this->name; }
-int Coach::get_price() { return this->price; }
-short Coach::get_power() { return this->power; }
-short Coach::get_flu() { return this->flu; }
-short Coach::get_strike() { return this->strike; }
-bool Coach::get_is_resurrected() { return this->is_resurrected; }
-bool Coach::get_is_dead() { return this->is_dead; }
-Club* Coach::get_club() { return this->club; }
+string Coach::get_name() const { return this->name; }
+int Coach::get_price() const { return this->price; }
+short Coach::get_power() const { return this->power; }
+short Coach::get_flu() const { return this->flu; }
+short Coach::get_strike() const { return this->strike; }
+bool Coach::get_is_resurrected() const { return this->is_resurrected; }
+bool Coach::get_is_dead() const { return this->is_dead; }
+Club* Coach::get_club() const { return this->club; }
 
 // Methods
 bool Coach::is_available() {
@@ -82,4 +82,11 @@ void Coach::transfer(Club* new_club) {
 		this->club = new_club;
 		this->club->set_coach(this);
 	}
+}
+
+bool Coach::can_be_bought(Club* club) const {
+	if (this->club == nullptr && this->flu == 0 && this->strike == 0 && !this->is_dead && club->get_owner()->check_withdrawal(this->price) && club->get_footballer() == nullptr)
+		return true;
+	else
+		return false;
 }

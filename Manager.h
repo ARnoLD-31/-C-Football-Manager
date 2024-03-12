@@ -29,14 +29,14 @@ public:
 	void set_club(Club* club);
 
 	// Getters
-	string get_name();
-	string get_type();
-	int get_price();
-	short get_level();
-	short get_flu();
-	bool get_is_resurrected();
-	bool get_is_dead();
-	Club* get_club();
+	string get_name() const;
+	string get_type() const;
+	int get_price() const;
+	short get_level() const;
+	short get_flu() const;
+	bool get_is_resurrected() const;
+	bool get_is_dead() const;
+	Club* get_club() const;
 
 	// Methods
 	bool is_available();

@@ -35,15 +35,15 @@ public:
 	void set_manager(Manager* manager);
 
 	//Getters
-	string get_name();
-	string get_league();
-	string get_codename();
-	int get_price();
-	int get_income();
+	string get_name() const;
+	string get_league() const;
+	string get_codename() const;
+	int get_price() const;
+	int get_income() const;
 	int get_win_price(string type);
-	short get_cooldown();
-	Player* get_owner();
-	Footballer* get_footballer();
-	Coach* get_coach();
-	Manager* get_manager();
+	short get_cooldown() const;
+	Player* get_owner() const;
+	Footballer* get_footballer() const;
+	Coach* get_coach() const;
+	Manager* get_manager() const;
 };

@@ -26,19 +26,20 @@ public:
 	void set_club(Club* club);
 
 	// Getters
-	string get_name();
-	int get_price();
-	short get_power();
-	short get_flu();
-	bool get_is_resurrected();
-	bool get_is_dead();
-	Club* get_club();
+	string get_name() const;
+	int get_price() const;
+	short get_power() const;
+	short get_flu() const;
+	bool get_is_resurrected() const;
+	bool get_is_dead() const;
+	Club* get_club() const;
 
 	// Methods
-	bool is_available();
+	bool is_available() const;
 	int buy(Club* club);
 	int sell(bool is_transfer_market);
 	void die();
 	void resurrect();
 	void transfer(Club* new_club);
+	bool can_be_bought(Club* club) const;
 };

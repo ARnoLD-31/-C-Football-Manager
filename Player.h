@@ -1,10 +1,13 @@
 #pragma once
 #include <iostream>
+#include <vector>
 #include <map>
 
 using namespace std;
 
+class Footballer;
 class Manager;
+class Club;
 
 class Player {
 private:
@@ -35,13 +38,15 @@ public:
 	void set_statistic(string type, int number);
 
 	// Getters
-	string get_name();
-	int get_balance();
-	int get_income();
-	short get_position();
-	bool get_is_disqualified();
+	string get_name() const;
+	int get_balance() const;
+	int get_income() const;
+	short get_position() const;
+	bool get_is_disqualified() const;
 	int get_bonus(string type);
 	int get_statistic(string type);
+	vector <Club*> get_clubs() const;
+	vector <Footballer*> get_footballers() const;
 	//Manager* get_economist();
 
 	// Methods

@@ -1,6 +1,10 @@
 #include <iostream>
+#include <vector>
 #include "Player.h"
+#include "Club.h"
+#include "Footballer.h"
 #include "Manager.h"
+#include "Globals.h"
 
 using namespace std;
 
@@ -23,13 +27,31 @@ void Player::set_bonus(string type, short count) { this->bonuses[type] = count; 
 void Player::set_statistic(string type, int number) { this->statistics[type] = number; }
 
 // Getters
-string Player::get_name() { return this->name; }
-int Player::get_balance() { return this->balance; }
-int Player::get_income() { return this->income; }
-short Player::get_position() { return this->position; }
-bool Player::get_is_disqualified() { return this->is_disqualified; }
+string Player::get_name() const { return this->name; }
+int Player::get_balance() const { return this->balance; }
+int Player::get_income() const { return this->income; }
+short Player::get_position() const { return this->position; }
+bool Player::get_is_disqualified() const { return this->is_disqualified; }
 int Player::get_bonus(string type) { return this->bonuses[type]; }
 int Player::get_statistic(string type) { return this->statistics[type]; }
+vector<Club*> Player::get_clubs() const {
+	vector<Club*> temp;
+	for (auto& pair : *clubs) {
+		if (pair.second.get_owner() == this) {
+			temp.push_back(&pair.second);
+		}
+	}
+	return temp;
+}
+vector<Footballer*> Player::get_footballers() const {
+	vector<Footballer*> temp;
+	for (auto& pair : *footballers) {
+		if (pair.second.get_club() != nullptr && pair.second.get_club()->get_owner() == this) {
+			temp.push_back(&pair.second);
+		}
+	}
+	return temp;
+}
 //Manager* Player::get_economist() { return this->economist; }
 
 // Methods

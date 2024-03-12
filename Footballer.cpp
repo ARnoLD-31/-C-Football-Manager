@@ -20,16 +20,16 @@ void Footballer::set_is_dead(int is_dead) { this->is_dead = is_dead; }
 void Footballer::set_club(Club* club) { this->club = club; }
 
 // Getters
-string Footballer::get_name() { return this->name; }
-int Footballer::get_price() { return this->price; }
-short Footballer::get_power() { return this->power; }
-short Footballer::get_flu() { return this->flu; }
-bool Footballer::get_is_resurrected() { return this->is_resurrected; }
-bool Footballer::get_is_dead() { return this->is_dead; }
-Club* Footballer::get_club() { return this->club; }
+string Footballer::get_name() const { return this->name; }
+int Footballer::get_price() const { return this->price; }
+short Footballer::get_power() const { return this->power; }
+short Footballer::get_flu() const { return this->flu; }
+bool Footballer::get_is_resurrected() const { return this->is_resurrected; }
+bool Footballer::get_is_dead() const { return this->is_dead; }
+Club* Footballer::get_club() const { return this->club; }
 
 // Methods
-bool Footballer::is_available() {
+bool Footballer::is_available() const {
 	if (this->flu == 0 && !this->is_dead)
 		return true;
 	else
@@ -37,11 +37,15 @@ bool Footballer::is_available() {
 }
 
 int Footballer::buy(Club* club) {
-	Player* player = club->get_owner();
-	int bought_price = player->withdrawal(this->price, 'B');
-	this->club = club;
-	cout << "Footballer " << this->name << " was bought in " << club->get_name() << " for " << bought_price << endl;
-	return bought_price;
+	if (Footballer::can_be_bought(club)) {
+		Player* player = club->get_owner();
+		int bought_price = player->withdrawal(this->price, 'B');
+		this->club = club;
+		cout << "Footballer " << this->name << " was bought in " << club->get_name() << " for " << bought_price << endl;
+		return bought_price;
+	}
+	else
+		return -1;
 }
 
 int Footballer::sell(bool is_transfer_market) {
@@ -80,4 +84,11 @@ void Footballer::transfer(Club* new_club) {
 		this->club = new_club;
 		this->club->set_footballer(this);
 	}
+}
+
+bool Footballer::can_be_bought(Club* club) const {
+	if  (this->club == nullptr && this->flu == 0 && !this->is_dead && club->get_owner()->check_withdrawal(this->price) && club->get_footballer() == nullptr)
+		return true;
+	else
+		return false;
 }
