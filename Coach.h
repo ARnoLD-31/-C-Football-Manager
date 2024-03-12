@@ -8,8 +8,8 @@ class Club;
 class Coach
 {
 private:
-	int price;
-	short power;
+	int price = 0;
+	short power = 0;
 	short flu = 0;
 	short strike = 0;
 	bool is_resurrected = false;
@@ -39,7 +39,7 @@ public:
 	Club* get_club() const;
 
 	// Methods
-	bool is_available();
+	bool is_available() const;
 	int buy(Club* club);
 	int sell(bool is_transfer_market);
 	void die();

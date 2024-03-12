@@ -31,7 +31,7 @@ bool Manager::get_is_dead() const { return this->is_dead; }
 Club* Manager::get_club() const { return this->club; }
 
 // Methods
-bool Manager::is_available() {
+bool Manager::is_available() const {
 	if (this->flu == 0 && !this->is_dead)
 		return true;
 	else

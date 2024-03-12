@@ -50,7 +50,7 @@ public:
 	//Manager* get_economist();
 
 	// Methods
-	bool check_withdrawal(int money);
+	bool check_withdrawal(int money) const;
 	int withdrawal(int money, char type);
 	int deposit(int money, char type);
 	void complete_the_circle();

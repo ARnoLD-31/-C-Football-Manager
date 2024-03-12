@@ -31,7 +31,7 @@ bool Coach::get_is_dead() const { return this->is_dead; }
 Club* Coach::get_club() const { return this->club; }
 
 // Methods
-bool Coach::is_available() {
+bool Coach::is_available() const {
 	if (this->flu == 0 && !this->is_dead)
 		return true;
 	else

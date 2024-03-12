@@ -8,7 +8,7 @@ class Club;
 class Manager
 {
 private:
-	int price;
+	int price = 0;
 	string type;
 	short flu = 0;
 	short level = 1;
@@ -39,7 +39,7 @@ public:
 	Club* get_club() const;
 
 	// Methods
-	bool is_available();
+	bool is_available() const;
 	int buy(Club* club);
 	int sell(bool is_transfer_market);
 	void die();

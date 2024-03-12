@@ -55,7 +55,7 @@ vector<Footballer*> Player::get_footballers() const {
 //Manager* Player::get_economist() { return this->economist; }
 
 // Methods
-bool Player::check_withdrawal(int money) {
+bool Player::check_withdrawal(int money) const {
 	/*if (Player::get_economist() != nullptr)
 		;*/
 	if (this->balance >= money)
@@ -74,7 +74,7 @@ int Player::withdrawal(int money, char type) {
 	else if (type == 'I')
 		this->income -= money;
 	else
-		return -1; // If money isn't enought
+		return -1; // If money isn't enough
 	return money;
 }
 
