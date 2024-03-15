@@ -7,7 +7,10 @@ using namespace std;
 
 class Footballer;
 class Manager;
+class TV;
 class Club;
+class Coach;
+class Manager;
 
 class Player {
 private:
@@ -45,8 +48,12 @@ public:
 	bool get_is_disqualified() const;
 	int get_bonus(string type);
 	int get_statistic(string type);
+	vector <TV*> get_TVs() const;
 	vector <Club*> get_clubs() const;
 	vector <Footballer*> get_footballers() const;
+	vector <Coach*> get_coaches() const;
+	vector <Manager*> get_managers() const;
+	Manager* get_economist() const;
 	//Manager* get_economist();
 
 	// Methods

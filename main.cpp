@@ -10,15 +10,12 @@
 using namespace std;
 
 int main() {
-	initialize_clubs();
-	initialize_footballers();
-	initialize_coaches();
-	initialize_managers();
-	cout << (*managers)["Ronaldo"].get_name() << endl;
-	(*clubs)["Real Madrid"].set_owner(pl1);
-	for (Club* value : pl1->get_clubs()) {
-		cout << value->get_name() << endl;
-	}
+	initialize_all();
+	pl1->set_name("DSDS");
+	clubs["Real Madrid"].set_owner(pl1);
+	cout << clubs["Real Madrid"].get_owner()->get_name();
+	clubs["Real Madrid"].set_owner(nullptr);
+	cout << clubs["Real Madrid"].get_owner() << endl;
 	_getch();
 	return 0;
 }

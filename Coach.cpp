@@ -40,10 +40,10 @@ bool Coach::is_available() const {
 
 int Coach::buy(Club* club) {
 	Player* player = club->get_owner();
-	int bought_price = player->withdrawal(this->price, 'B');
+	int price_bought = player->withdrawal(this->price, 'B');
 	this->club = club;
-	cout << "Coach " << this->name << " was bought in " << club->get_name() << " for " << bought_price << endl;
-	return bought_price;
+	cout << "Coach " << this->name << " was bought in " << club->get_name() << " for " << price_bought << endl;
+	return price_bought;
 }
 
 int Coach::sell(bool is_transfer_market) {

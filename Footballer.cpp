@@ -39,10 +39,10 @@ bool Footballer::is_available() const {
 int Footballer::buy(Club* club) {
 	if (Footballer::can_be_bought(club)) {
 		Player* player = club->get_owner();
-		int bought_price = player->withdrawal(this->price, 'B');
+		int price_bought = player->withdrawal(this->price, 'B');
 		this->club = club;
-		cout << "Footballer " << this->name << " was bought in " << club->get_name() << " for " << bought_price << endl;
-		return bought_price;
+		cout << "Footballer " << this->name << " was bought in " << club->get_name() << " for " << price_bought << endl;
+		return price_bought;
 	}
 	else
 		return -1;
