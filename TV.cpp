@@ -6,9 +6,11 @@ TV::TV(string name) {
 }
 //Setters
 void TV::set_owner(Player* owner) { this->owner = owner; }
+
 //Getters
 string TV::get_name() const { return this->name; }
 Player* TV::get_owner() const { return this->owner; }
+
 //Methods
 int TV::buy(Player* player) {
 	this->owner = player;
@@ -24,3 +26,20 @@ int TV::sell() {
 	return price_sold;
 }
 
+void TV::stepped(Player* player) {
+	cout << "Player " << player->get_name() << " stepped on " << this->name << ". ";
+	if (player == this->owner) {
+		cout << "He's the owner" << endl;
+	}
+	else {
+		int payment = this->owner->get_TV_payment();
+		cout << "The owner's " << this->owner->get_name() << endl;
+		if (player->can_withdrawal(payment, false)) {
+			this->owner->deposit(payment, 'B', false);
+			cout << player->get_name() << " successfully paid " << player->withdrawal(payment, 'B', false) << " to " << this->owner->get_name() << endl;
+		}
+		else {
+			player->need_money(payment, false);
+		}
+	}
+}

@@ -37,9 +37,14 @@ short Player::get_position() const { return this->position; }
 bool Player::get_is_disqualified() const { return this->is_disqualified; }
 int Player::get_bonus(string type) { return this->bonuses[type]; }
 int Player::get_statistic(string type) { return this->statistics[type]; }
+int Player::get_TV_payment() const {
+	short count = Player::get_TVs().size() - 1;
+	return TV_payment[count];
+}
 Manager* Player::get_economist() const {
 	Manager* manager = nullptr;
-	for (auto it = Player::get_managers().begin(); it != Player::get_managers().end(); it++) {
+	vector <Manager*> managers = Player::get_managers();
+	for (auto it = managers.begin(); it != managers.end(); ++it) {
 		if ((*it)->get_type() == "Economist") {
 			if (manager == nullptr || manager->get_level() < (*it)->get_level()) {
 				manager = *it;
@@ -95,19 +100,30 @@ vector<Manager*> Player::get_managers() const {
 }
 
 // Methods
-bool Player::check_withdrawal(int money) const {
-	if (Player::get_economist() != nullptr) 
-		money -= round(money * economist_bonus_withdrawal[Player::get_economist()->get_level() / 10000] * 10000);
+int Player::money_conversion(int money, char type, bool use_economist) const {
+	Manager* economist = Player::get_economist();
+	if (type == '+') {
+		if (economist != nullptr && use_economist)
+			money += round(money * economist_bonus_deposit[economist->get_level() - 1] / 1000) * 1000;
+	}
+	else {
+		if (economist != nullptr && use_economist)
+			money -= round(money * economist_bonus_withdrawal[economist->get_level() - 1] / 1000) * 1000;
+	}
+	return money;
+}
+
+bool Player::can_withdrawal(int money, bool use_economist) const {
+	money = Player::money_conversion(money, '-', use_economist);
 	if (this->balance >= money)
 		return true;
 	else
 		return false;
 }
 
-int Player::withdrawal(int money, char type) {
+int Player::withdrawal(int money, char type, bool use_economist) {
 	if (type == 'B') {
-		if (Player::get_economist() != nullptr)
-			money -= round(money * economist_bonus_withdrawal[Player::get_economist()->get_level() / 10000] * 10000);
+		money = Player::money_conversion(money, '-', use_economist);
 		this->balance -= money;
 	}
 	else 
@@ -115,10 +131,9 @@ int Player::withdrawal(int money, char type) {
 	return money;
 }
 
-int Player::deposit(int money, char type) {
+int Player::deposit(int money, char type, bool use_economist) {
 	if (type == 'B') {
-		if (Player::get_economist() != nullptr)
-			money += round(money * economist_bonus_deposit[Player::get_economist()->get_level() / 10000] * 10000);
+		money = Player::money_conversion(money, '+', use_economist);
 		this->balance += money;
 	}
 	else
@@ -126,7 +141,12 @@ int Player::deposit(int money, char type) {
 	return money;
 }
 
+void Player::need_money(int money, bool use_economist) {
+	money = Player::money_conversion(money, '-', use_economist);
+	cout << "Player " << this->name << " needs " << money - this->balance;
+	// TODO: Something to sell 
+}
 
 void Player::complete_the_circle() {
-	cout << this->name << " completed the circle. Credited " << this->deposit(this->income, 'B') << endl;
+	cout << this->name << " completed the circle. Credited " << this->deposit(this->income, 'B', false) << endl;
 }

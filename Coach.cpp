@@ -51,7 +51,7 @@ int Coach::sell(bool is_transfer_market) {
 	int sold_price = this->price;
 	if (!is_transfer_market)
 		sold_price /= 2;
-	sold_price = player->withdrawal(sold_price, 'B');
+	sold_price = player->deposit(sold_price, 'B');
 	this->club = nullptr;
 	cout << "Coach " << this->name << " was sold for " << sold_price << endl;
 	return sold_price;
@@ -85,7 +85,7 @@ void Coach::transfer(Club* new_club) {
 }
 
 bool Coach::can_be_bought(Club* club) const {
-	if (this->club == nullptr && this->flu == 0 && this->strike == 0 && !this->is_dead && club->get_owner()->check_withdrawal(this->price) && club->get_footballer() == nullptr)
+	if (this->club == nullptr && this->flu == 0 && this->strike == 0 && !this->is_dead && club->get_owner()->can_withdrawal(this->price) && club->get_footballer() == nullptr)
 		return true;
 	else
 		return false;

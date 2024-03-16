@@ -24,19 +24,16 @@ map <short, int> coach_pps = { {1, 1000000 }, {2, 2200000}, {3, 4000000} };
 
 string manager_names[9] = { "Mohammad bin Salman", "Mansour bin Zayed", "Carlos Slim", "David Beckham", "Ronaldo", "Didier Drogba", "Joseph Schumpeter", "Friedrich Hayek", "Karl Marx" };
 string manager_types[3] = { "Sheikh", "Former Footballer", "Economist" };
-map <short, int> sheikh_bonus = { {1, 1000000}, {2, 2500000}, {3, 5000000 } };
-map <short, short> ff_bonus = { {1, 1}, {2, 2}, {3, 3 } };
-map <short, float> economist_bonus_deposit = { {1, 0.1}, {2, 0.2}, {3, 0.4 } };
-map <short, float> economist_bonus_withdrawal = { {1, 0.15}, {2, 0.3}, {3, 0.6 } };
+int sheikh_bonus[3] = {1000000, 2500000, 5000000};
+short ff_bonus[3] = {1, 2, 3}; // Former footballer bonus
+float economist_bonus_deposit[3] = {0.1, 0.2, 0.4};
+float economist_bonus_withdrawal[3] = {0.15, 0.3,  0.6};
 int manager_price = 10000000;
 
 string TV_names[4] = { "Setanta Sports", "Euro Sports", "Rai Uno", "ESPN"};
 
-map<string, TV> TVS;
-map<string, Club> CLUBS;
-map<string, Footballer> FOOTBALLERS;
-map<string, Coach> COACHES;
-map<string, Manager> MANAGERS;
+int TV_payment[4] = { 300000, 500000, 1000000, 2000000 };
+
 
 map<string, TV> TVs;
 map<string, Club> clubs;
@@ -57,31 +54,31 @@ void initialize_all() {
 	initialize_managers();
 }
 void initialize_TVs() {
-	for (int i = 0; i < 4; i++) {
+	for (int i = 0; i < 4; ++i) {
 		TVs[TV_names[i]] = TV(TV_names[i]);
 	}
 }
 
 void initialize_clubs() {
-	for (int i = 0; i < 18; i++) {
+	for (int i = 0; i < 18; ++i) {
 		clubs[club_names[i]] = Club(club_names[i], club_prices[i], club_leagues[i / 3]);
 	}
 }
 
 void initialize_footballers() {
-	for (int i = 0; i < 34; i++) {
+	for (int i = 0; i < 34; ++i) {
 		footballers[footballer_names[i]] = Footballer(footballer_names[i], footballer_powers[i], footballer_pps[footballer_powers[i]]);
 	}
 }
 
 void initialize_coaches() {
-	for (int i = 0; i < 16; i++) {
+	for (int i = 0; i < 16; ++i) {
 		coaches[coach_names[i]] = Coach(coach_names[i], coach_powers[i], coach_pps[coach_powers[i]]);
 	}
 }
 
 void initialize_managers() {
-	for (int i = 0; i < 9; i++) {
+	for (int i = 0; i < 9; ++i) {
 		managers[manager_names[i]] = Manager(manager_names[i], manager_price, manager_types[i / 3]);
 	}
 }

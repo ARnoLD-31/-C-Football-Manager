@@ -25,5 +25,6 @@ public:
 	//Methods
 	int buy(Player* player);
 	int sell();
+	void stepped(Player* player);
 };
 

@@ -48,17 +48,19 @@ public:
 	bool get_is_disqualified() const;
 	int get_bonus(string type);
 	int get_statistic(string type);
+	int get_TV_payment() const;
 	vector <TV*> get_TVs() const;
 	vector <Club*> get_clubs() const;
 	vector <Footballer*> get_footballers() const;
 	vector <Coach*> get_coaches() const;
 	vector <Manager*> get_managers() const;
 	Manager* get_economist() const;
-	//Manager* get_economist();
-
+	
 	// Methods
-	bool check_withdrawal(int money) const;
-	int withdrawal(int money, char type);
-	int deposit(int money, char type);
+	int money_conversion(int money, char type, bool use_economist = true) const;
+	bool can_withdrawal(int money, bool use_economist = true) const;
+	int withdrawal(int money, char type, bool use_economist = true);
+	int deposit(int money, char type, bool use_economist = true);
+	void need_money(int money, bool use_economist = true);
 	void complete_the_circle();
 };

@@ -51,7 +51,7 @@ int Manager::sell(bool is_transfer_market) {
 	int sold_price = this->price;
 	if (!is_transfer_market)
 		sold_price /= 2;
-	sold_price = player->withdrawal(sold_price, 'B');
+	sold_price = player->deposit(sold_price, 'B');
 	this->club = nullptr;
 	cout << "Manager " << this->name << " was sold for " << sold_price << endl;
 	return sold_price;
