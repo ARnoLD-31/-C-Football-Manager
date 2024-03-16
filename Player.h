@@ -16,7 +16,6 @@ class Player {
 private:
 	string name;
 	int balance = 10000000;
-	int income = 2000000;
 	short position = 0;
 	bool is_disqualified = false;
 	map <string, short> bonuses = { {"Transfer market", 0},
@@ -30,11 +29,10 @@ private:
 public:
 	Player();
 	Player(string name);
-	Player(string name, int balance, int income);
+	Player(string name, int balance);
 	// Setters
 	void set_name(string name);
 	void set_balance(int balance);
-	void set_income(int income);
 	void set_position(short position);
 	void set_is_disqualified(bool is_disqualified);
 	void set_bonus(string type, short count);
@@ -54,13 +52,16 @@ public:
 	vector <Footballer*> get_footballers() const;
 	vector <Coach*> get_coaches() const;
 	vector <Manager*> get_managers() const;
+	vector <string> get_leagues() const;
+	vector <string> get_full_leagues() const;
 	Manager* get_economist() const;
 	
 	// Methods
+	vector <Club*> suitable_clubs(string for_what) const;
 	int money_conversion(int money, char type, bool use_economist = true) const;
 	bool can_withdrawal(int money, bool use_economist = true) const;
-	int withdrawal(int money, char type, bool use_economist = true);
-	int deposit(int money, char type, bool use_economist = true);
+	int withdrawal(int money, bool use_economist = true);
+	int deposit(int money, bool use_economist = true);
 	void need_money(int money, bool use_economist = true);
 	void complete_the_circle();
 };

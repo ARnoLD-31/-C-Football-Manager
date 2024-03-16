@@ -1,4 +1,6 @@
+#include <cmath>
 #include "Club.h"
+#include "Player.h"
 #include "Footballer.h"
 #include "Coach.h"
 #include <iostream>
@@ -14,8 +16,8 @@ Club::Club(string name, int price, string league) {
 	replace(this->codename.begin(), this->codename.end(), ' ', '_');
 	replace(this->codename.begin(), this->codename.end(), '-', '_');
 	this->income = this->price / 10;
-	this->win_price = { {"Footballer", this->price / 100000 / 3 * 100000},
-						{"Coach", this->price / 100000 / 1.5 * 100000},
+	this->win_price = { {"Footballer", round(this->price / 100000 / 3) * 100000},
+						{"Coach", round(this->price / 100000 / 1.5) * 100000},
 						{"Manager", this->price * 2} };
 }
 //Setters
@@ -37,3 +39,32 @@ Player* Club::get_owner() const { return this->owner; }
 Footballer* Club::get_footballer() const { return this->footballer; }
 Coach* Club::get_coach() const { return this->coach; }
 Manager* Club::get_manager() const { return this->manager; }
+
+//Methods
+bool Club::is_available() const {
+	if (this->footballer != nullptr && footballer->is_available()) 
+		return true;
+	else
+		return false;
+}
+
+bool Club::can_be_bought(Player* player) const {
+	if (this->owner == nullptr && player->can_withdrawal(this->price)) 
+		return true;
+	else
+		return false;
+}
+
+int Club::buy(Player* player) {
+	this->owner = player;
+	int price_bought = this->owner->withdrawal(this->price);
+	cout << "Club " << this->name << " was bought by " << this->owner->get_name() << " for " << price_bought << endl;
+	return price_bought;
+}
+
+int Club::sell() {
+	int price_sold = this->owner->deposit(price);
+	cout << "Club " << this->name << " was sold by " << this->owner->get_name() << " for " << price_sold << endl;
+	this->owner = nullptr;
+	return price_sold;
+}

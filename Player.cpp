@@ -15,15 +15,13 @@ Player::Player() {}
 Player::Player(string name) {
 	this->name = name;
 }
-Player::Player(string name, int balance, int income) {
+Player::Player(string name, int balance) {
 	this->name = name;
 	this->balance = balance;
-	this->income = income;
 }
 // Setters
 void Player::set_name(string name) { this->name = name; }
 void Player::set_balance(int balance) { this->balance = balance; }
-void Player::set_income(int income) { this->income = income; }
 void Player::set_position(short position) { this->position = position; }
 void Player::set_is_disqualified(bool is_disqualified) { this->is_disqualified = is_disqualified; }
 void Player::set_bonus(string type, short count) { this->bonuses[type] = count; }
@@ -32,11 +30,18 @@ void Player::set_statistic(string type, int number) { this->statistics[type] = n
 // Getters
 string Player::get_name() const { return this->name; }
 int Player::get_balance() const { return this->balance; }
-int Player::get_income() const { return this->income; }
 short Player::get_position() const { return this->position; }
 bool Player::get_is_disqualified() const { return this->is_disqualified; }
 int Player::get_bonus(string type) { return this->bonuses[type]; }
 int Player::get_statistic(string type) { return this->statistics[type]; }
+int Player::get_income() const {
+	int income = 2000000;
+	vector<Club*> my_clubs = Player::get_clubs();
+	for (vector<Club*>::iterator it = my_clubs.begin(); it != my_clubs.end(); ++it) {
+		income += (*it)->get_income();
+	}
+	return Player::money_conversion(income, '+');
+}
 int Player::get_TV_payment() const {
 	short count = Player::get_TVs().size() - 1;
 	return TV_payment[count];
@@ -44,7 +49,7 @@ int Player::get_TV_payment() const {
 Manager* Player::get_economist() const {
 	Manager* manager = nullptr;
 	vector <Manager*> managers = Player::get_managers();
-	for (auto it = managers.begin(); it != managers.end(); ++it) {
+	for (vector <Manager*>::iterator it = managers.begin(); it != managers.end(); ++it) {
 		if ((*it)->get_type() == "Economist") {
 			if (manager == nullptr || manager->get_level() < (*it)->get_level()) {
 				manager = *it;
@@ -98,21 +103,73 @@ vector<Manager*> Player::get_managers() const {
 	}
 	return temp;
 }
-
-// Methods
-int Player::money_conversion(int money, char type, bool use_economist) const {
-	Manager* economist = Player::get_economist();
-	if (type == '+') {
-		if (economist != nullptr && use_economist)
-			money += round(money * economist_bonus_deposit[economist->get_level() - 1] / 1000) * 1000;
+vector<string> Player::get_leagues() const {
+	bool is_in_vector = false;
+	vector<string> leagues;
+	vector<Club*> my_clubs = Player::get_clubs();
+	for (vector<Club*>::iterator it = my_clubs.begin(); it != my_clubs.end(); ++it) {
+		for (vector<string>::iterator it1 = leagues.begin(); it1 != leagues.end(); ++it1) {
+			if (*it1 == (*it)->get_league()) {
+				is_in_vector = true;
+				break;
+			}
+		}
+		if (!is_in_vector)
+			leagues.push_back((*it)->get_league());
+		is_in_vector = false;
 	}
-	else {
-		if (economist != nullptr && use_economist)
-			money -= round(money * economist_bonus_withdrawal[economist->get_level() - 1] / 1000) * 1000;
+	return leagues;
+}
+vector<string> Player::get_full_leagues() const {
+	vector<string> full_leagues;
+	vector<string> leagues = Player::get_leagues();
+	vector<Club*> my_clubs = Player::get_clubs();
+	short count = 0;
+	for (vector<string>::iterator it = leagues.begin(); it != leagues.end(); ++it) {
+		count = 0;
+		for (vector<Club*>::iterator it1 = my_clubs.begin(); it1 != my_clubs.end(); ++it1) {
+			if (*it == (*it1)->get_league())
+				count++;
+		}
+		if (count == 3) {
+			full_leagues.push_back(*it);
+		}
 	}
-	return money;
+	return full_leagues;
 }
 
+// Methods
+vector <Club*> Player::suitable_clubs(string for_what) const {
+	vector<Club*> my_clubs = Player::get_clubs();
+	vector<string> full_leagues = Player::get_full_leagues();
+	vector<Club*> fit_clubs;
+	if (for_what == "Footballer") {
+		for (vector<Club*>::iterator it = my_clubs.begin(); it != my_clubs.end(); ++it) {
+			if ((*it)->get_footballer() == nullptr)
+				fit_clubs.push_back(*it);
+		}
+	}
+	else {
+		if (full_leagues.size() == 0 || my_clubs.size() / full_leagues.size() < 3) return fit_clubs;
+		for (vector<Club*>::iterator it = my_clubs.begin(); it != my_clubs.end(); ++it) {
+			if (for_what == "Coach" && ((*it)->get_footballer() == nullptr || (*it)->get_coach() != nullptr)) continue;
+			else if (for_what == "Manager" && ((*it)->get_footballer() == nullptr || (*it)->get_coach() == nullptr || (*it)->get_coach() != nullptr)) continue;
+			for (vector<string>::iterator it1 = full_leagues.begin(); it1 != full_leagues.end(); ++it1) {
+				if (*it1 == (*it)->get_league())
+					fit_clubs.push_back(*it);
+			}
+		}
+	}
+	return fit_clubs;
+}
+int Player::money_conversion(int money, char type, bool use_economist) const {
+	Manager* economist = Player::get_economist();
+	if (type == '+' && economist != nullptr && use_economist) 
+		money += round(money * economist_bonus_deposit[economist->get_level() - 1] / 1000) * 1000;
+	else if (economist != nullptr && use_economist) 
+		money -= round(money * economist_bonus_withdrawal[economist->get_level() - 1] / 1000) * 1000;
+	return money;
+}
 bool Player::can_withdrawal(int money, bool use_economist) const {
 	money = Player::money_conversion(money, '-', use_economist);
 	if (this->balance >= money)
@@ -120,33 +177,21 @@ bool Player::can_withdrawal(int money, bool use_economist) const {
 	else
 		return false;
 }
-
-int Player::withdrawal(int money, char type, bool use_economist) {
-	if (type == 'B') {
-		money = Player::money_conversion(money, '-', use_economist);
-		this->balance -= money;
-	}
-	else 
-		this->income -= money;
+int Player::withdrawal(int money, bool use_economist) {
+	money = Player::money_conversion(money, '-', use_economist);
+	this->balance -= money;
 	return money;
 }
-
-int Player::deposit(int money, char type, bool use_economist) {
-	if (type == 'B') {
-		money = Player::money_conversion(money, '+', use_economist);
-		this->balance += money;
-	}
-	else
-		this->income += money;
+int Player::deposit(int money, bool use_economist) {
+	money = Player::money_conversion(money, '+', use_economist);
+	this->balance += money;
 	return money;
 }
-
 void Player::need_money(int money, bool use_economist) {
 	money = Player::money_conversion(money, '-', use_economist);
 	cout << "Player " << this->name << " needs " << money - this->balance;
 	// TODO: Something to sell 
 }
-
 void Player::complete_the_circle() {
-	cout << this->name << " completed the circle. Credited " << this->deposit(this->income, 'B', false) << endl;
+	cout << this->name << " completed the circle. Credited " << this->deposit(Player::get_income(), false) << endl;
 }

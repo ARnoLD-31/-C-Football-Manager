@@ -14,13 +14,13 @@ Player* TV::get_owner() const { return this->owner; }
 //Methods
 int TV::buy(Player* player) {
 	this->owner = player;
-	int price_bought = this->owner->withdrawal(price, 'B');
+	int price_bought = this->owner->withdrawal(price);
 	cout << "TV " << this->name << " was bought by " << this->owner->get_name() << " for " << price_bought << endl;
 	return price_bought;
 }
 
 int TV::sell() {
-	int price_sold = this->owner->deposit(price, 'B');
+	int price_sold = this->owner->deposit(price);
 	cout << "TV " << this->name << " was sold by " << this->owner->get_name() << " for " << price_sold << endl;
 	this->owner = nullptr;
 	return price_sold;
@@ -35,8 +35,8 @@ void TV::stepped(Player* player) {
 		int payment = this->owner->get_TV_payment();
 		cout << "The owner's " << this->owner->get_name() << endl;
 		if (player->can_withdrawal(payment, false)) {
-			this->owner->deposit(payment, 'B', false);
-			cout << player->get_name() << " successfully paid " << player->withdrawal(payment, 'B', false) << " to " << this->owner->get_name() << endl;
+			this->owner->deposit(payment, false);
+			cout << player->get_name() << " successfully paid " << player->withdrawal(payment, false) << " to " << this->owner->get_name() << endl;
 		}
 		else {
 			player->need_money(payment, false);

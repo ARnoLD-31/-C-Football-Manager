@@ -46,4 +46,10 @@ public:
 	Footballer* get_footballer() const;
 	Coach* get_coach() const;
 	Manager* get_manager() const;
+
+	//Methods
+	bool is_available() const;
+	bool can_be_bought(Player* player) const;
+	int buy(Player* player);
+	int sell();
 };

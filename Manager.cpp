@@ -40,18 +40,22 @@ bool Manager::is_available() const {
 
 int Manager::buy(Club* club) {
 	Player* player = club->get_owner();
-	int price_bought = player->withdrawal(this->price, 'B');
+	int price_bought = player->withdrawal(this->price);
 	this->club = club;
+	this->club->set_manager(this);
 	cout << "Manager " << this->name << " was bought in " << club->get_name() << " for " << price_bought << endl;
 	return price_bought;
 }
 
 int Manager::sell(bool is_transfer_market) {
 	Player* player = club->get_owner();
+	bool use_economist = false;
 	int sold_price = this->price;
 	if (!is_transfer_market)
+		use_economist = true;
 		sold_price /= 2;
-	sold_price = player->deposit(sold_price, 'B');
+	sold_price = player->deposit(sold_price, use_economist);
+	this->club->set_manager(nullptr);
 	this->club = nullptr;
 	cout << "Manager " << this->name << " was sold for " << sold_price << endl;
 	return sold_price;

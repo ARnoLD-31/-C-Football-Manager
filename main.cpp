@@ -1,5 +1,6 @@
 #include <iostream>
 #include <conio.h>
+#include <vector>
 #include "TV.h" 
 #include "Footballer.h"
 #include "Coach.h"
@@ -15,8 +16,19 @@ int main() {
 	pl1->set_name("OLEG");
 	pl1->set_balance(20000000);
 	clubs["Real Madrid"].set_owner(pl1);
-	managers["Karl Marx"].buy(&clubs["Real Madrid"]);
-	TVs["Setanta Sports"].buy(pl1);
+	clubs["Barcelona"].set_owner(pl1);
+	clubs["Atletico Madrid"].set_owner(pl1);
+	footballers["Cristiano Ronaldo"].buy(&clubs["Real Madrid"]);
+	footballers["Lionel Messi"].buy(&clubs["Barcelona"]);
+	footballers["Kilian Mbappe"].buy(&clubs["Atletico Madrid"]);
+	clubs["Spartak Moscow"].set_owner(pl1);
+	clubs["CSKA"].set_owner(pl1);
+	clubs["Krasnodar"].set_owner(pl1);
+	clubs["Al-Nassr"].set_owner(pl1);
+	vector<Club*> m_clubs = pl1->suitable_clubs("Manager");
+	for (vector<Club*>::iterator it = m_clubs.begin(); it != m_clubs.end(); ++it) {
+		cout << (*it)->get_name() << endl;
+	}
 	_getch();
 	return 0;
 }

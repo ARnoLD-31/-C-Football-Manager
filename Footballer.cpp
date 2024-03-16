@@ -37,23 +37,23 @@ bool Footballer::is_available() const {
 }
 
 int Footballer::buy(Club* club) {
-	if (Footballer::can_be_bought(club)) {
-		Player* player = club->get_owner();
-		int price_bought = player->withdrawal(this->price, 'B');
-		this->club = club;
-		cout << "Footballer " << this->name << " was bought in " << club->get_name() << " for " << price_bought << endl;
-		return price_bought;
-	}
-	else
-		return -1;
+	Player* player = club->get_owner();
+	int price_bought = player->withdrawal(this->price);
+	this->club = club;
+	this->club->set_footballer(this);
+	cout << "Footballer " << this->name << " was bought in " << club->get_name() << " for " << price_bought << endl;
+	return price_bought;
 }
 
 int Footballer::sell(bool is_transfer_market) {
 	Player* player = club->get_owner();
+	bool use_economist = false;
 	int sold_price = this->price;
 	if (!is_transfer_market)
+		use_economist = true;
 		sold_price /= 2;
-	sold_price = player->deposit(sold_price, 'B');
+	sold_price = player->deposit(sold_price, use_economist);
+	this->club->set_footballer(nullptr);
 	this->club = nullptr;
 	cout << "Footballer " << this->name << " was sold for " << sold_price << endl;
 	return sold_price;
@@ -87,7 +87,7 @@ void Footballer::transfer(Club* new_club) {
 }
 
 bool Footballer::can_be_bought(Club* club) const {
-	if  (this->club == nullptr && this->flu == 0 && !this->is_dead && club->get_owner()->can_withdrawal(this->price) && club->get_footballer() == nullptr)
+	if (this->club == nullptr && !this->is_dead && club->get_footballer() == nullptr && club->get_owner()->can_withdrawal(this->price))
 		return true;
 	else
 		return false;
