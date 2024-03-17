@@ -14,7 +14,7 @@ using namespace std;
 int main() {
 	initialize_all();
 	pl1->set_name("OLEG");
-	pl1->set_balance(20000000);
+	pl1->set_balance(200000000);
 	clubs["Real Madrid"].set_owner(pl1);
 	clubs["Barcelona"].set_owner(pl1);
 	clubs["Atletico Madrid"].set_owner(pl1);
@@ -26,9 +26,7 @@ int main() {
 	clubs["Krasnodar"].set_owner(pl1);
 	clubs["Al-Nassr"].set_owner(pl1);
 	vector<Club*> m_clubs = pl1->suitable_clubs("Manager");
-	for (vector<Club*>::iterator it = m_clubs.begin(); it != m_clubs.end(); ++it) {
-		cout << (*it)->get_name() << endl;
-	}
+	cout << coaches["Josep Guardiola"].can_be_bought(&clubs["Barcelona"]);
 	_getch();
 	return 0;
 }

@@ -41,6 +41,8 @@ public:
 	int get_price() const;
 	int get_income() const;
 	int get_win_price(string type);
+	int get_current_win_price();
+	short get_power() const;
 	short get_cooldown() const;
 	Player* get_owner() const;
 	Footballer* get_footballer() const;

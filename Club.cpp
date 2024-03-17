@@ -1,10 +1,12 @@
 #include <cmath>
+#include <iostream>
+#include <algorithm>
 #include "Club.h"
 #include "Player.h"
 #include "Footballer.h"
 #include "Coach.h"
-#include <iostream>
-#include <algorithm>
+#include "Manager.h"
+#include "Globals.h"
 
 using namespace std;
 Club::Club() {}
@@ -34,6 +36,25 @@ string Club::get_codename() const { return this->codename; }
 int Club::get_price() const { return this->price; }
 int Club::get_income() const { return this->income; }
 int Club::get_win_price(string type){ return this->win_price[type]; }
+int Club::get_current_win_price() {
+	if (this->manager != nullptr && this->manager->is_available()) return this->win_price["Manager"];
+	else if (this->coach != nullptr && this->coach->is_available()) return this->win_price["Coach"];
+	else if (this->footballer != nullptr && this->manager->is_available()) return this->win_price["Footballer"];
+	else return 0;
+}
+short Club::get_power() const {
+	short power = 0;
+	if (this->footballer != nullptr && this->footballer->is_available()) {
+		power += this->footballer->get_power();
+	}
+	if (this->coach != nullptr && this->coach->is_available()) {
+		power += this->coach->get_power();
+	}
+	if (this->manager != nullptr && this->manager->get_type() == "Former footballer" && this->manager->is_available()) {
+		power += ff_bonus[this->manager->get_level() - 1];
+	}
+	return power;
+}
 short Club::get_cooldown() const { return this->cooldown; }
 Player* Club::get_owner() const { return this->owner; }
 Footballer* Club::get_footballer() const { return this->footballer; }

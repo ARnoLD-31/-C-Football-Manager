@@ -58,6 +58,7 @@ public:
 	
 	// Methods
 	vector <Club*> suitable_clubs(string for_what) const;
+	Club* the_most_club(string type) const;
 	int money_conversion(int money, char type, bool use_economist = true) const;
 	bool can_withdrawal(int money, bool use_economist = true) const;
 	int withdrawal(int money, bool use_economist = true);

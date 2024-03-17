@@ -139,6 +139,23 @@ vector<string> Player::get_full_leagues() const {
 }
 
 // Methods
+Club* Player::the_most_club(string type) const {
+	vector<Club*> my_clubs = Player::get_clubs();
+	if (my_clubs.size() == 0) return nullptr;
+	Club* club = nullptr;
+	short number = my_clubs[0]->get_power();
+	for (vector<Club*>::iterator it = my_clubs.begin(); it != my_clubs.end(); ++it) {
+		if ((type == "powerless" && (*it)->get_power() < number) || (type == "powerful" && (*it)->get_power() > number)) {
+			number = (*it)->get_power();
+		}
+	}
+	for (vector<Club*>::iterator it = my_clubs.begin(); it != my_clubs.end(); ++it) {
+		if ((*it)->get_power() == number && (club == nullptr || ((type == "powerless" && (*it)->get_price() < club->get_price()) || (type == "powerful" && (*it)->get_price() > club->get_price())))) {
+			club = *it;
+		}
+	}
+	return club;
+}
 vector <Club*> Player::suitable_clubs(string for_what) const {
 	vector<Club*> my_clubs = Player::get_clubs();
 	vector<string> full_leagues = Player::get_full_leagues();

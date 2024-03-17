@@ -45,6 +45,7 @@ public:
 	void die();
 	void resurrect();
 	void transfer(Club* new_club);
+	bool can_be_bought(Club* club) const;
 };
 
 
