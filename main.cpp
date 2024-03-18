@@ -25,7 +25,7 @@ int main() {
 	clubs["CSKA"].set_owner(pl1);
 	clubs["Krasnodar"].set_owner(pl1);
 	clubs["Al-Nassr"].set_owner(pl1);
-	vector<Club*> m_clubs = pl1->suitable_clubs("Manager");
+	vector<Club*> m_clubs = pl1->suitable_clubs_for("Manager");
 	cout << coaches["Josep Guardiola"].can_be_bought(&clubs["Barcelona"]);
 	_getch();
 	return 0;

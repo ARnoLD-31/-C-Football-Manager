@@ -50,6 +50,7 @@ public:
 	Manager* get_manager() const;
 
 	//Methods
+	void new_turn();
 	bool is_available() const;
 	bool can_be_bought(Player* player) const;
 	int buy(Player* player);

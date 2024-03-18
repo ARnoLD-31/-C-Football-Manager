@@ -39,20 +39,14 @@ int Club::get_win_price(string type){ return this->win_price[type]; }
 int Club::get_current_win_price() {
 	if (this->manager != nullptr && this->manager->is_available()) return this->win_price["Manager"];
 	else if (this->coach != nullptr && this->coach->is_available()) return this->win_price["Coach"];
-	else if (this->footballer != nullptr && this->manager->is_available()) return this->win_price["Footballer"];
+	else if (this->footballer != nullptr && this->footballer->is_available()) return this->win_price["Footballer"];
 	else return 0;
 }
 short Club::get_power() const {
 	short power = 0;
-	if (this->footballer != nullptr && this->footballer->is_available()) {
-		power += this->footballer->get_power();
-	}
-	if (this->coach != nullptr && this->coach->is_available()) {
-		power += this->coach->get_power();
-	}
-	if (this->manager != nullptr && this->manager->get_type() == "Former footballer" && this->manager->is_available()) {
-		power += ff_bonus[this->manager->get_level() - 1];
-	}
+	if (this->footballer != nullptr && this->footballer->is_available()) power += this->footballer->get_power();
+	if (this->coach != nullptr && this->coach->is_available()) power += this->coach->get_power();
+	if (this->manager != nullptr && this->manager->get_type() == "Former footballer" && this->manager->is_available()) power += ff_bonus[this->manager->get_level() - 1];
 	return power;
 }
 short Club::get_cooldown() const { return this->cooldown; }
@@ -62,8 +56,14 @@ Coach* Club::get_coach() const { return this->coach; }
 Manager* Club::get_manager() const { return this->manager; }
 
 //Methods
+void Club::new_turn() {
+	if (this->cooldown == 0) this->cooldown--;
+	if (this->footballer != nullptr) this->footballer->new_turn();
+	if (this->coach != nullptr) this->coach->new_turn();
+	if (this->manager != nullptr) this->manager->new_turn();
+}
 bool Club::is_available() const {
-	if (this->footballer != nullptr && footballer->is_available()) 
+	if (this->cooldown == 0 && this->footballer != nullptr && footballer->is_available()) 
 		return true;
 	else
 		return false;

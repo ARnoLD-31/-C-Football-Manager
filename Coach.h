@@ -39,6 +39,7 @@ public:
 	Club* get_club() const;
 
 	// Methods
+	void new_turn();
 	bool is_available() const;
 	int buy(Club* club);
 	int sell(bool is_transfer_market);

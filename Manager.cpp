@@ -31,6 +31,9 @@ bool Manager::get_is_dead() const { return this->is_dead; }
 Club* Manager::get_club() const { return this->club; }
 
 // Methods
+void Manager::new_turn() {
+	if (this->flu != 0) this->flu--;
+}
 bool Manager::is_available() const {
 	if (this->flu == 0 && !this->is_dead)
 		return true;
@@ -89,7 +92,7 @@ void Manager::transfer(Club* new_club) {
 }
 
 bool Manager::can_be_bought(Club* club) const {
-	vector<Club*> my_clubs = club->get_owner()->suitable_clubs("Manager");
+	vector<Club*> my_clubs = club->get_owner()->suitable_clubs_for("Manager");
 	if (this->club != nullptr || this->is_dead || club->get_footballer() == nullptr || club->get_coach() == nullptr || club->get_manager() != nullptr || !club->get_owner()->can_withdrawal(this->price)) return false;
 	for (vector<Club*>::iterator it = my_clubs.begin(); it != my_clubs.end(); ++it)
 		if (*it == club) return true;

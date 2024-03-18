@@ -156,19 +156,15 @@ Club* Player::the_most_club(string type) const {
 	}
 	return club;
 }
-vector <Club*> Player::suitable_clubs(string for_what) const {
+vector <Club*> Player::suitable_clubs_for(string for_what) const {
 	vector<Club*> my_clubs = Player::get_clubs();
 	vector<string> full_leagues = Player::get_full_leagues();
 	vector<Club*> fit_clubs;
-	if (for_what == "Footballer") {
-		for (vector<Club*>::iterator it = my_clubs.begin(); it != my_clubs.end(); ++it) {
-			if ((*it)->get_footballer() == nullptr)
-				fit_clubs.push_back(*it);
-		}
-	}
-	else {
-		if (full_leagues.size() == 0 || my_clubs.size() / full_leagues.size() < 3) return fit_clubs;
-		for (vector<Club*>::iterator it = my_clubs.begin(); it != my_clubs.end(); ++it) {
+	for (vector<Club*>::iterator it = my_clubs.begin(); it != my_clubs.end(); ++it) {
+		if ((for_what == "Death" && (*it)->get_footballer() != nullptr) || (for_what == "Match" && (*it)->is_available()) || (for_what == "Footballer" && (*it)->get_footballer() == nullptr))
+			fit_clubs.push_back(*it);
+		else if (for_what == "Coach" || for_what == "Manager") {
+			if (full_leagues.size() == 0 || my_clubs.size() / full_leagues.size() < 3) return fit_clubs;
 			if (for_what == "Coach" && ((*it)->get_footballer() == nullptr || (*it)->get_coach() != nullptr)) continue;
 			else if (for_what == "Manager" && ((*it)->get_footballer() == nullptr || (*it)->get_coach() == nullptr || (*it)->get_coach() != nullptr)) continue;
 			for (vector<string>::iterator it1 = full_leagues.begin(); it1 != full_leagues.end(); ++it1) {
