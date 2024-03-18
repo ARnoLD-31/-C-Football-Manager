@@ -28,10 +28,10 @@ int TV::sell() {
 
 void TV::stepped(Player* player) {
 	cout << "Player " << player->get_name() << " stepped on " << this->name << ". ";
-	if (player == this->owner) {
+	if (this->owner != player) {
 		cout << "He's the owner" << endl;
 	}
-	else {
+	else if (this->owner != nullptr) {
 		int payment = this->owner->get_TV_payment();
 		cout << "The owner's " << this->owner->get_name() << endl;
 		if (player->can_withdrawal(payment, false)) {
@@ -41,5 +41,8 @@ void TV::stepped(Player* player) {
 		else {
 			player->need_money(payment, false);
 		}
+	}
+	else {
+		cout << "Object doesn't have the owner" << endl;
 	}
 }

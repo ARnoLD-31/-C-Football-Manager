@@ -8,25 +8,24 @@
 #include "Player.h"
 #include "Club.h"
 #include "Globals.h"
+#include <SFML/Graphics.hpp>
 
 using namespace std;
+using namespace sf;
 
-int main() {
+int main()
+{
 	initialize_all();
-	pl1->set_name("OLEG");
-	pl1->set_balance(200000000);
-	clubs["Real Madrid"].set_owner(pl1);
-	clubs["Barcelona"].set_owner(pl1);
-	clubs["Atletico Madrid"].set_owner(pl1);
-	footballers["Cristiano Ronaldo"].buy(&clubs["Real Madrid"]);
-	footballers["Lionel Messi"].buy(&clubs["Barcelona"]);
-	footballers["Kilian Mbappe"].buy(&clubs["Atletico Madrid"]);
-	clubs["Spartak Moscow"].set_owner(pl1);
-	clubs["CSKA"].set_owner(pl1);
-	clubs["Krasnodar"].set_owner(pl1);
-	clubs["Al-Nassr"].set_owner(pl1);
-	vector<Club*> m_clubs = pl1->suitable_clubs_for("Manager");
-	cout << coaches["Josep Guardiola"].can_be_bought(&clubs["Barcelona"]);
-	_getch();
+	RenderWindow window(VideoMode(1500, 1000), "FOOTBALL MANAGER");
+	while (window.isOpen()) {
+		Event event;
+		while (window.pollEvent(event)) {
+			if (event.type == Event::Closed)
+				window.close();
+		}
+		window.clear(Color::Blue);
+		window.display();
+	}
+
 	return 0;
 }

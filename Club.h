@@ -53,6 +53,7 @@ public:
 	void new_turn();
 	bool is_available() const;
 	bool can_be_bought(Player* player) const;
+	void stepped(Player* player);
 	int buy(Player* player);
 	int sell();
 };

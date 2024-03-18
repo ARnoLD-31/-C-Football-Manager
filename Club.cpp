@@ -76,6 +76,16 @@ bool Club::can_be_bought(Player* player) const {
 		return false;
 }
 
+void Club::stepped(Player* player) {
+	cout << "Player " << player->get_name() << " stepped on " << this->name << ". ";
+	if (player == this->owner) {
+		cout << "He's the owner" << endl;
+	}
+	else {
+		cout << "The owner's " << this->owner->get_name() << endl;
+	}
+}
+
 int Club::buy(Player* player) {
 	this->owner = player;
 	int price_bought = this->owner->withdrawal(this->price);
