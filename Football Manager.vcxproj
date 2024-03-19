@@ -104,7 +104,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>SFML_STATIC</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Users\pavel\source\includes\SFML_X64\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\pavel\source\repos\Football Manager\include;C:\Users\pavel\source\includes\SFML_X64\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
@@ -145,38 +145,25 @@
     </ProjectReference>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Club.cpp" />
-    <ClCompile Include="Coach.cpp" />
-    <ClCompile Include="Field.cpp" />
-    <ClCompile Include="Footballer.cpp" />
-    <ClCompile Include="Globals.cpp" />
-    <ClCompile Include="main.cpp" />
-    <ClCompile Include="Manager.cpp" />
-    <ClCompile Include="Player.cpp" />
-    <ClCompile Include="TV.cpp" />
+    <ClCompile Include="src\algorithms\Club.cpp" />
+    <ClCompile Include="src\algorithms\Coach.cpp" />
+    <ClCompile Include="src\algorithms\Field.cpp" />
+    <ClCompile Include="src\algorithms\Footballer.cpp" />
+    <ClCompile Include="src\algorithms\Manager.cpp" />
+    <ClCompile Include="src\algorithms\Player.cpp" />
+    <ClCompile Include="src\algorithms\TV.cpp" />
+    <ClCompile Include="src\Globals.cpp" />
+    <ClCompile Include="src\main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Club.h" />
-    <ClInclude Include="Coach.h" />
-    <ClInclude Include="Field.h" />
-    <ClInclude Include="Footballer.h" />
-    <ClInclude Include="Globals.h" />
-    <ClInclude Include="Manager.h" />
-    <ClInclude Include="Player.h" />
-    <ClInclude Include="TV.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="openal32.dll" />
-    <None Include="sfml-audio-2.dll" />
-    <None Include="sfml-audio-d-2.dll" />
-    <None Include="sfml-graphics-2.dll" />
-    <None Include="sfml-graphics-d-2.dll" />
-    <None Include="sfml-network-2.dll" />
-    <None Include="sfml-network-d-2.dll" />
-    <None Include="sfml-system-2.dll" />
-    <None Include="sfml-system-d-2.dll" />
-    <None Include="sfml-window-2.dll" />
-    <None Include="sfml-window-d-2.dll" />
+    <ClInclude Include="include\algorithms\Club.h" />
+    <ClInclude Include="include\algorithms\Coach.h" />
+    <ClInclude Include="include\algorithms\Field.h" />
+    <ClInclude Include="include\algorithms\Footballer.h" />
+    <ClInclude Include="include\algorithms\Globals.h" />
+    <ClInclude Include="include\algorithms\Manager.h" />
+    <ClInclude Include="include\algorithms\Player.h" />
+    <ClInclude Include="include\algorithms\TV.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -1,12 +1,12 @@
 #include <iostream>
 #include <conio.h>
 #include <vector>
-#include "TV.h" 
-#include "Footballer.h"
-#include "Coach.h"
-#include "Manager.h"
-#include "Player.h"
-#include "Club.h"
+#include "algorithms/TV.h" 
+#include "algorithms/Footballer.h"
+#include "algorithms/Coach.h"
+#include "algorithms/Manager.h"
+#include "algorithms/Player.h"
+#include "algorithms/Club.h"
 #include "Globals.h"
 #include <SFML/Graphics.hpp>
 

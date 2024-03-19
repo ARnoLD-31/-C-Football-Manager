@@ -1,12 +1,12 @@
 #include <iostream>
 #include <vector>
 #include <cmath>
-#include "Player.h"
-#include "TV.h"
-#include "Club.h"
-#include "Footballer.h"
-#include "Coach.h"
-#include "Manager.h"
+#include "algorithms/Player.h"
+#include "algorithms/TV.h"
+#include "algorithms/Club.h"
+#include "algorithms/Footballer.h"
+#include "algorithms/Coach.h"
+#include "algorithms/Manager.h"
 #include "Globals.h"
 
 using namespace std;

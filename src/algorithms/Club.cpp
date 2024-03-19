@@ -1,11 +1,11 @@
 #include <cmath>
 #include <iostream>
 #include <algorithm>
-#include "Club.h"
-#include "Player.h"
-#include "Footballer.h"
-#include "Coach.h"
-#include "Manager.h"
+#include "algorithms/Club.h"
+#include "algorithms/Player.h"
+#include "algorithms/Footballer.h"
+#include "algorithms/Coach.h"
+#include "algorithms/Manager.h"
 #include "Globals.h"
 
 using namespace std;

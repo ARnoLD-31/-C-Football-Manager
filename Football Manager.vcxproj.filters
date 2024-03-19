@@ -13,73 +13,66 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Source Files\algorithms">
+      <UniqueIdentifier>{8d67c03b-364c-4cfb-8800-a4d1c736bb53}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\algorithms">
+      <UniqueIdentifier>{69b6ff93-8dda-4019-912d-480c4038bdb4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
+    <ClCompile Include="src\algorithms\Club.cpp">
+      <Filter>Source Files\algorithms</Filter>
+    </ClCompile>
+    <ClCompile Include="src\algorithms\Coach.cpp">
+      <Filter>Source Files\algorithms</Filter>
+    </ClCompile>
+    <ClCompile Include="src\algorithms\Field.cpp">
+      <Filter>Source Files\algorithms</Filter>
+    </ClCompile>
+    <ClCompile Include="src\algorithms\Footballer.cpp">
+      <Filter>Source Files\algorithms</Filter>
+    </ClCompile>
+    <ClCompile Include="src\algorithms\Manager.cpp">
+      <Filter>Source Files\algorithms</Filter>
+    </ClCompile>
+    <ClCompile Include="src\algorithms\Player.cpp">
+      <Filter>Source Files\algorithms</Filter>
+    </ClCompile>
+    <ClCompile Include="src\algorithms\TV.cpp">
+      <Filter>Source Files\algorithms</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Globals.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Footballer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Club.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Player.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Globals.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Manager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Coach.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="TV.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Field.cpp">
+    <ClCompile Include="src\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Footballer.h">
+    <ClInclude Include="include\algorithms\Club.h">
+      <Filter>Header Files\algorithms</Filter>
+    </ClInclude>
+    <ClInclude Include="include\algorithms\Coach.h">
+      <Filter>Header Files\algorithms</Filter>
+    </ClInclude>
+    <ClInclude Include="include\algorithms\Field.h">
+      <Filter>Header Files\algorithms</Filter>
+    </ClInclude>
+    <ClInclude Include="include\algorithms\Footballer.h">
+      <Filter>Header Files\algorithms</Filter>
+    </ClInclude>
+    <ClInclude Include="include\algorithms\Manager.h">
+      <Filter>Header Files\algorithms</Filter>
+    </ClInclude>
+    <ClInclude Include="include\algorithms\Player.h">
+      <Filter>Header Files\algorithms</Filter>
+    </ClInclude>
+    <ClInclude Include="include\algorithms\TV.h">
+      <Filter>Header Files\algorithms</Filter>
+    </ClInclude>
+    <ClInclude Include="include\algorithms\Globals.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Club.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Player.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Globals.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Manager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Coach.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="TV.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Field.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="openal32.dll" />
-    <None Include="sfml-audio-2.dll" />
-    <None Include="sfml-audio-d-2.dll" />
-    <None Include="sfml-graphics-2.dll" />
-    <None Include="sfml-graphics-d-2.dll" />
-    <None Include="sfml-network-2.dll" />
-    <None Include="sfml-network-d-2.dll" />
-    <None Include="sfml-system-2.dll" />
-    <None Include="sfml-system-d-2.dll" />
-    <None Include="sfml-window-2.dll" />
-    <None Include="sfml-window-d-2.dll" />
   </ItemGroup>
 </Project>

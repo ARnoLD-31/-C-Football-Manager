@@ -1,10 +1,10 @@
 #include "Globals.h"
-#include "Club.h"
-#include "TV.h"
-#include "Footballer.h"
-#include "Coach.h"
-#include "Manager.h"
-#include "Player.h"
+#include "algorithms/Club.h"
+#include "algorithms/TV.h"
+#include "algorithms/Footballer.h"
+#include "algorithms/Coach.h"
+#include "algorithms/Manager.h"
+#include "algorithms/Player.h"
 #include <iostream>
 
 using namespace std;

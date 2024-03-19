@@ -1,6 +1,6 @@
-#include "Footballer.h"
-#include "Club.h"
-#include "Player.h"
+#include "algorithms/Footballer.h"
+#include "algorithms/Club.h"
+#include "algorithms/Player.h"
 #include <iostream>
 
 using namespace std;

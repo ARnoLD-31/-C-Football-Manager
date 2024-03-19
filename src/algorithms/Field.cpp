@@ -1,5 +1,5 @@
-#include "Field.h"
-#include "Player.h"
+#include "algorithms/Field.h"
+#include "algorithms/Player.h"
 
 void cage(Player* player) {
 	string this_clubs[18] = {"Barcelona", "Real Madrid", "Atletico Madrid", "Arsenal", "Liverpool", "Manchester City", "Bayern", "Borussia", "Bayer", "Juventus", "Inter", "Milan", "Al-Nassr", "Al-Ittihad", "Al-Hilal", "Spartak Moscow", "CSKA", "Krasnodar"};

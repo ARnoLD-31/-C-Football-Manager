@@ -1,5 +1,5 @@
-#include "TV.h"
-#include "Player.h"
+#include "algorithms/TV.h"
+#include "algorithms/Player.h"
 
 TV::TV(string name) {
 	this->name = name;
