@@ -9,7 +9,7 @@ class TV
 {
 private:
 	string name;
-	int price = 2000000;
+	unsigned int price = 2000000;
 	Player* owner = nullptr;
 public:
 	TV() {};

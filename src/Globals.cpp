@@ -5,6 +5,7 @@
 #include "algorithms/Coach.h"
 #include "algorithms/Manager.h"
 #include "algorithms/Player.h"
+#include "graphics/Graphics.h"
 #include <iostream>
 
 using namespace std;
@@ -46,12 +47,9 @@ Player PLAYER_2;
 Player* pl1 = &PLAYER_1;
 Player* pl2 = &PLAYER_2;
 
-void initialize_all() {
-	initialize_TVs();
-	initialize_clubs();
-	initialize_footballers();
-	initialize_coaches();
-	initialize_managers();
+void initialize_engine() {
+	Engine ENGINE;
+	Engine* engine = &ENGINE;
 }
 void initialize_TVs() {
 	for (int i = 0; i < 4; ++i) {
@@ -81,4 +79,12 @@ void initialize_managers() {
 	for (int i = 0; i < 9; ++i) {
 		managers[manager_names[i]] = Manager(manager_names[i], manager_price, manager_types[i / 3]);
 	}
+}
+void initialize_all() {
+	initialize_engine();
+	initialize_TVs();
+	initialize_clubs();
+	initialize_footballers();
+	initialize_coaches();
+	initialize_managers();
 }

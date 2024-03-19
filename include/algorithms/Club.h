@@ -14,9 +14,9 @@ private:
 	string name;
 	string league;
 	string codename;
-	int price;
-	int income;
-	short cooldown = 0;
+	unsigned int price;
+	unsigned int income;
+	unsigned short cooldown = 0;
 	Player* owner = nullptr;
 	Footballer* footballer = nullptr;
 	Coach* coach = nullptr;

@@ -8,10 +8,10 @@ class Club;
 class Manager
 {
 private:
-	int price = 0;
+	unsigned int price = 0;
 	string type;
-	short flu = 0;
-	short level = 1;
+	unsigned short flu = 0;
+	unsigned short level = 1;
 	bool is_resurrected = false;
 	bool is_dead = false;
 	string name;

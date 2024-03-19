@@ -19,6 +19,18 @@
     <Filter Include="Header Files\algorithms">
       <UniqueIdentifier>{69b6ff93-8dda-4019-912d-480c4038bdb4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\graphics">
+      <UniqueIdentifier>{346084a9-2dc5-49cc-a26b-3f13f375a4b1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\graphics">
+      <UniqueIdentifier>{66b3bc23-82e7-4b37-b730-0571cd4cb2d2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\graphics\resources">
+      <UniqueIdentifier>{0ef156d4-ecfd-4e2c-856b-4567b5fbee1c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\graphics">
+      <UniqueIdentifier>{ebd27bec-8f9f-4c0f-8d6c-8a277be93178}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\algorithms\Club.cpp">
@@ -48,6 +60,9 @@
     <ClCompile Include="src\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\graphics\Graphics.cpp">
+      <Filter>Source Files\graphics</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\algorithms\Club.h">
@@ -71,8 +86,31 @@
     <ClInclude Include="include\algorithms\TV.h">
       <Filter>Header Files\algorithms</Filter>
     </ClInclude>
-    <ClInclude Include="include\algorithms\Globals.h">
+    <ClInclude Include="include\graphics\Graphics.h">
+      <Filter>Header Files\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Globals.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="include\graphics\resources\background.h">
+      <Filter>Header Files\graphics\resources</Filter>
+    </ClInclude>
+    <ClInclude Include="include\graphics\resources\background_blurred.h">
+      <Filter>Header Files\graphics\resources</Filter>
+    </ClInclude>
+    <ClInclude Include="include\graphics\resources\table.h">
+      <Filter>Header Files\graphics\resources</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="src\graphics\resources\background.jpg">
+      <Filter>Resource Files\graphics</Filter>
+    </Image>
+    <Image Include="src\graphics\resources\background_blurred.jpg">
+      <Filter>Resource Files\graphics</Filter>
+    </Image>
+    <Image Include="src\graphics\resources\table.jpg">
+      <Filter>Resource Files\graphics</Filter>
+    </Image>
   </ItemGroup>
 </Project>

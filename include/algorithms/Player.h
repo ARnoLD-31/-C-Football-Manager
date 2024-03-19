@@ -15,8 +15,8 @@ class Manager;
 class Player {
 private:
 	string name;
-	int balance = 10000000;
-	short position = 0;
+	unsigned int balance = 10000000;
+	unsigned short position = 0;
 	bool is_disqualified = false;
 	map <string, short> bonuses = { {"Transfer market", 0},
 									{"Vaccine", 0},

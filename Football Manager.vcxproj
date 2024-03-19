@@ -118,6 +118,10 @@
     <ProjectReference>
       <UseLibraryDependencyInputs>true</UseLibraryDependencyInputs>
     </ProjectReference>
+    <PostBuildEvent>
+      <Command>
+      </Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -128,7 +132,7 @@
       <PreprocessorDefinitions>SFML_STATIC</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>C:\Users\pavel\source\includes\SFML_X64\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\pavel\source\repos\Football Manager\include;C:\Users\pavel\source\includes\SFML_X64\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -143,6 +147,10 @@
     <ProjectReference>
       <UseLibraryDependencyInputs>true</UseLibraryDependencyInputs>
     </ProjectReference>
+    <PostBuildEvent>
+      <Command>
+      </Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\algorithms\Club.cpp" />
@@ -153,6 +161,7 @@
     <ClCompile Include="src\algorithms\Player.cpp" />
     <ClCompile Include="src\algorithms\TV.cpp" />
     <ClCompile Include="src\Globals.cpp" />
+    <ClCompile Include="src\graphics\Graphics.cpp" />
     <ClCompile Include="src\main.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -160,10 +169,19 @@
     <ClInclude Include="include\algorithms\Coach.h" />
     <ClInclude Include="include\algorithms\Field.h" />
     <ClInclude Include="include\algorithms\Footballer.h" />
-    <ClInclude Include="include\algorithms\Globals.h" />
     <ClInclude Include="include\algorithms\Manager.h" />
     <ClInclude Include="include\algorithms\Player.h" />
     <ClInclude Include="include\algorithms\TV.h" />
+    <ClInclude Include="include\Globals.h" />
+    <ClInclude Include="include\graphics\Graphics.h" />
+    <ClInclude Include="include\graphics\resources\background.h" />
+    <ClInclude Include="include\graphics\resources\background_blurred.h" />
+    <ClInclude Include="include\graphics\resources\table.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="src\graphics\resources\background.jpg" />
+    <Image Include="src\graphics\resources\background_blurred.jpg" />
+    <Image Include="src\graphics\resources\table.jpg" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

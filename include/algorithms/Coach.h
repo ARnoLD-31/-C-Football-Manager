@@ -8,10 +8,10 @@ class Club;
 class Coach
 {
 private:
-	int price = 0;
-	short power = 0;
-	short flu = 0;
-	short strike = 0;
+	unsigned int price = 0;
+	unsigned short power = 0;
+	unsigned short flu = 0;
+	unsigned short strike = 0;
 	bool is_resurrected = false;
 	bool is_dead = false;
 	string name;

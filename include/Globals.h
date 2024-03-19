@@ -10,14 +10,13 @@ class Player;
 class Footballer;
 class Coach;
 class Manager;
+class Engine;
 
 void initialize_all();
-void initialize_clubs();
-void initialize_TVs();
-void initialize_footballers();
-void initialize_coaches();
-void initialize_managers();
 
+const float screen_x = 1500;
+const float screen_y = 1000;
+extern Engine* engine;
 extern Player* pl1;
 extern Player* pl2;
 extern map <string, Club> clubs;
