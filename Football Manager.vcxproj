@@ -176,12 +176,16 @@
     <ClInclude Include="include\graphics\Graphics.h" />
     <ClInclude Include="include\graphics\resources\background.h" />
     <ClInclude Include="include\graphics\resources\background_blurred.h" />
+    <ClInclude Include="include\graphics\resources\MiSans.h" />
     <ClInclude Include="include\graphics\resources\table.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="src\graphics\resources\background.jpg" />
     <Image Include="src\graphics\resources\background_blurred.jpg" />
-    <Image Include="src\graphics\resources\table.jpg" />
+    <Image Include="src\graphics\resources\table.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="src\graphics\resources\MiSans.ttf" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -35,7 +35,6 @@ string TV_names[4] = { "Setanta Sports", "Euro Sports", "Rai Uno", "ESPN"};
 
 int TV_payment[4] = { 300000, 500000, 1000000, 2000000 };
 
-
 map<string, TV> TVs;
 map<string, Club> clubs;
 map<string, Footballer> footballers;

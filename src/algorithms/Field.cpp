@@ -8,7 +8,7 @@ void cage(Player* player) {
 			cout << "Player " << player->get_name() << " stepped on start position" << endl;
 			break;
 		case 1:
-
+			//TODO End
 		default:
 			break;
 		}

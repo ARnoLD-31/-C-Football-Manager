@@ -101,6 +101,9 @@
     <ClInclude Include="include\graphics\resources\table.h">
       <Filter>Header Files\graphics\resources</Filter>
     </ClInclude>
+    <ClInclude Include="include\graphics\resources\MiSans.h">
+      <Filter>Header Files\graphics\resources</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="src\graphics\resources\background.jpg">
@@ -109,8 +112,13 @@
     <Image Include="src\graphics\resources\background_blurred.jpg">
       <Filter>Resource Files\graphics</Filter>
     </Image>
-    <Image Include="src\graphics\resources\table.jpg">
+    <Image Include="src\graphics\resources\table.png">
       <Filter>Resource Files\graphics</Filter>
     </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="src\graphics\resources\MiSans.ttf">
+      <Filter>Resource Files\graphics</Filter>
+    </Font>
   </ItemGroup>
 </Project>
